@@ -1,0 +1,9 @@
+opencv-python == 4.9.0.80
+flask == 3.0.3 
+python-dotenv == ? 
+inference-sdk == ?
+inference-cli == ?
+supervision == ?
+opencv-python-headless == ?
+flask_socketio == ?
+aiortc == ?
