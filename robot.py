@@ -12,19 +12,19 @@ def Init():
     gpio.setup(5, gpio.OUT)
     gpio.setup(26, gpio.OUT)
 
-def ForwardStride():
+def forwardStride():
     gpio.output(3, True)
     gpio.output(11, False)
     gpio.output(5, True)
     gpio.output(26, False)
 
-def BackwardStride():
+def backwardStride():
     gpio.output(3, False)
     gpio.output(11, True)
     gpio.output(5, False)
     gpio.output(26, True)
 
-def TrayCollection(s):
+def trayCollection(s):
     s.angle = 0
     sleep(1)
     s.angle = 100
