@@ -1,9 +1,9 @@
 import RPi.GPIO as gpio
 from gpiozero import AngularServo
-import time
+from time import sleep
 import sys
 
-s = AngularServo()
+s = AngularServo(21,min_angle=0, max_angle=180)
 
 def Init():
     gpio.setmode(gpio.BOARD)
@@ -18,4 +18,6 @@ def ForwardStride():
     gpio.output(5, True)
     gpio.output(26, False)
 
-# def Transfer():
+
+def TrayCollection(s):
+    
