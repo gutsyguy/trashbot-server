@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 import subprocess
 from video_stream import Video_Stream
+from time import sleep
 
 app = Flask(__name__)
 video_stream = Video_Stream()
@@ -10,7 +11,7 @@ broadcast_process = None
 def home():
     return jsonify({'message': "Easy"})
 
-@app.route('/start', methods=['POST'])
+@app.route('/api/start', methods=['POST'])
 def start_broadcast():
     global broadcast_process
     if broadcast_process is not None:
@@ -23,7 +24,7 @@ def start_broadcast():
     broadcast_process = subprocess.Popen(command)
     return jsonify({'message': 'Broadcast started'}), 200
 
-@app.route('/stop', methods=['POST'])
+@app.route('/api/stop', methods=['POST'])
 def stop_broadcast():
     global broadcast_process
     if broadcast_process is None:
@@ -34,6 +35,23 @@ def stop_broadcast():
     broadcast_process.terminate()
     broadcast_process = None
     return jsonify({'message': 'Broadcast stopped'}), 200
+
+@app.route('/api/moveForward', methods = ["GET"])
+def forward():
+    return "Moved forward"
+
+@app.route('/api/moveBackward', methods = ["GET"])
+def backward():
+    return "Moved backward"
+
+@app.route('/api/turnRight', methods = ["GET"])
+def right():
+    return "Turned Right"
+
+
+@app.route('/api/turnLeft', methods = ["GET"])
+def left():
+    return "Turned Left"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
