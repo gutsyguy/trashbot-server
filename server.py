@@ -17,22 +17,19 @@ def start_broadcast():
     if broadcast_process is not None:
         return jsonify({'message': 'Broadcast already running'}), 400
     
-    # Command to start broadcasting (replace with your actual command)
     video_stream.start_stream()
 
-    # Start the broadcast process
     broadcast_process = subprocess.Popen(command)
     return jsonify({'message': 'Broadcast started'}), 200
 
 @app.route('/api/stop', methods=['POST'])
 def stop_broadcast():
     global broadcast_process
-    if broadcast_process is None:
-        return jsonify({'message': 'Broadcast not running'}), 400
+    # if broadcast_process is None:
+        # return jsonify({'message': 'Broadcast not running'}), 400
     
-    # Stop the broadcast process
     video_stream.stop_stream()
-    broadcast_process.terminate()
+    # broadcast_process.terminate()
     broadcast_process = None
     return jsonify({'message': 'Broadcast stopped'}), 200
 
