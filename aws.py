@@ -1,7 +1,11 @@
 import cv2
 import subprocess
 import logging
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+stream_key = os.environ["stream_key"]
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 
@@ -17,7 +21,7 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 cap.set(cv2.CAP_PROP_FPS, 25)
 
 # Define the FFmpeg command for streaming to Amazon IVS
-rtmp_url = 'rtmp://<your-ivs-ingest-endpoint>:1935/<stream-key>'
+rtmp_url = stream_key
 ffmpeg_command = ['ffmpeg', '-y', '-f', 'rawvideo', '-vcodec', 'rawvideo', '-pix_fmt', 'bgr24', 
                   '-s', '{}x{}'.format(640, 480), '-r', '25', '-i', '-', '-c:v', 'libx264', 
                   '-pix_fmt', 'yuv420p', '-preset', 'ultrafast', '-f', 'flv', rtmp_url]
