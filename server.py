@@ -2,12 +2,12 @@ from flask import Flask, jsonify, request
 import subprocess
 from video_stream import Video_Stream
 from time import sleep
-from robot.py import Init, ForwardStride, TrayCollection
+from robot.py import Init, ForwardStride,BackwardStride, TrayCollection
 
 app = Flask(__name__)
 video_stream = Video_Stream()
-Init()
 
+Init()
 
 broadcast_process = None
 @app.route('/', methods=['GET'])
@@ -38,10 +38,12 @@ def stop_broadcast():
 
 @app.route('/api/moveForward', methods = ["GET"])
 def forward():
+    ForwardStride()
     return "Moved forward"
 
 @app.route('/api/moveBackward', methods = ["GET"])
 def backward():
+    BackwardStride()
     return "Moved backward"
 
 @app.route('/api/turnRight', methods = ["GET"])
@@ -52,6 +54,8 @@ def right():
 @app.route('/api/turnLeft', methods = ["GET"])
 def left():
     return "Turned Left"
+
+    
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
