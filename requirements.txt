@@ -2,5 +2,5 @@ opencv-python == 4.9.0.80
 flask == 3.0.3 
 aiortc == 1.5.0 
 boto == 1.33.13
-dotenv == 0.21.1
+dotenv == 0.0.5
 

@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 class Video_Stream:
     def __init__(self):
         load_dotenv()
-        self.stream_key = os.environ["stream_key"]
+        self.stream_key = os.environ['stream_key']
         self.ffmpeg_process = None
         self.camera = None
         logging.basicConfig(level=logging.INFO)
