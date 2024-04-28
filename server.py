@@ -2,9 +2,12 @@ from flask import Flask, jsonify, request
 import subprocess
 from video_stream import Video_Stream
 from time import sleep
+from robot.py import Init, ForwardStride, TrayCollection
 
 app = Flask(__name__)
 video_stream = Video_Stream()
+Init()
+
 
 broadcast_process = None
 @app.route('/', methods=['GET'])
