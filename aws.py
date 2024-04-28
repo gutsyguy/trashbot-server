@@ -21,6 +21,7 @@ rtmp_url = stream_key
 ffmpeg_command = ['ffmpeg', '-y', '-f', 'rawvideo', '-vcodec', 'rawvideo', '-pix_fmt', 'bgr24', 
                   '-s', '{}x{}'.format(640, 480), '-r', '25', '-i', '-', '-c:v', 'libx264', 
                   '-pix_fmt', 'yuv420p', '-preset', 'ultrafast', '-f', 'flv', rtmp_url]
+
 print("____________________________-")
 print(ffmpeg_command)
 print("____________________________-")
